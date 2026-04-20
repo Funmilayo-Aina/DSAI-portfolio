@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funmilayo Aina | AI Research Portfolio</title>
+<meta name="description" content="AI Researcher, Data Scientist, and interdisciplinary innovator bridging AI, Biology, and Education.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+
+:root{
+  --bg:#0b0c0f;
+  --bg2:#111318;
+  --bg3:#181b22;
+  --bg4:#1e2129;
+  --amber:#e8a838;
+  --amber2:#f5c96a;
+  --amber3:#c4831a;
+  --amber-dim:rgba(232,168,56,.13);
+  --amber-border:#030d26;
+  --text:#e8e4d9;
+  --text2:#9e9b92;
+  --text3:#5c5a54;
+  --border:rgba(255,255,255,.06);
+  --border2:rgba(255,255,255,.1);
+  --border3:rgba(9, 2, 31, 0.16);
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'Outfit',sans-serif;
+  --font-mono:'DM Mono',monospace;
+  --max:1200px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease2:cubic-bezier(.4,0,.2,1);
+  --r:6px;
+}
+[data-theme="light"]{
+  --bg:#f5f3ee;--bg2:#eeece6;--bg3:#e6e3db;--bg4:#dedad0;
+  --text:#1a1814;--text2:#5a5750;--text3:#9a9890;
+  --border:rgba(0,0,0,.07);--border2:rgba(0,0,0,.12);--border3:rgba(0,0,0,.18);
+  --amber:#b87b10;--amber2:#d4920f;--amber3:#8a5c0c;
+  --amber-dim:rgba(184,123,16,.1);--amber-border:rgba(184,123,16,.4);
+}
+
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background .35s,color .35s}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--amber-border);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;border-bottom:1px solid transparent;transition:background .4s,border-color .4s,padding .3s}
+nav.scrolled{background:rgba(11,12,15,.88);backdrop-filter:blur(20px);border-color:var(--border);padding-top:.9rem;padding-bottom:.9rem}
+[data-theme="light"] nav.scrolled{background:rgba(245,243,238,.9)}
+.nav-logo{font-family:var(--font-display);font-size:1.2rem;font-weight:300;letter-spacing:.04em;color:var(--text);text-decoration:none}
+.nav-logo-dot{color:var(--amber)}
+.nav-links{display:flex;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.73rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.nav-links a:hover{color:var(--amber)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.theme-btn{background:none;border:1px solid var(--border2);border-radius:var(--r);width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--text2);transition:border-color .2s,color .2s,background .2s}
+.theme-btn:hover{border-color:var(--amber-border);color:var(--amber);background:var(--amber-dim)}
+.nav-cv{font-size:.73rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--amber);padding:.45rem 1.2rem;border-radius:var(--r);text-decoration:none;transition:background .2s,transform .15s}
+.nav-cv:hover{background:var(--amber2);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text2);transition:transform .3s,opacity .2s;border-radius:1px}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg2);z-index:190;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transform:translateY(-20px);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.mobile-menu.open{opacity:1;pointer-events:all;transform:none}
+.mobile-menu a{font-family:var(--font-display);font-size:2.25rem;font-weight:300;color:var(--text);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.mobile-menu a:hover{color:var(--amber)}
+
+/* HERO */
+#home{position:relative;min-height:100vh;display:flex;align-items:center;padding:0 3rem;overflow:hidden;z-index:1}
+#home::after{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(232,168,56,.06) 0%,transparent 70%);top:50%;left:55%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-inner{max-width:var(--max);margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;padding:7rem 0 5rem}
+.hero-left{animation:fadeUp .9s var(--ease) both}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.22em;color:var(--amber);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.85rem;animation:fadeUp .8s .1s var(--ease) both}
+.hero-eyebrow::before{content:'';display:block;width:2.5rem;height:1px;background:var(--amber)}
+.hero-name{font-family:var(--font-display);font-size:clamp(3.2rem,6.5vw,6rem);font-weight:300;line-height:1.0;letter-spacing:-.015em;margin-bottom:1.4rem;animation:fadeUp .8s .15s var(--ease) both}
+.hero-name em{font-style:italic;color:var(--amber)}
+.hero-tagline{font-size:1.05rem;color:var(--text2);max-width:420px;line-height:1.8;margin-bottom:2.75rem;animation:fadeUp .8s .2s var(--ease) both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .25s var(--ease) both}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--amber);color:var(--bg);font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.9rem;border-radius:var(--r);text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
+.btn-primary:hover{background:var(--amber2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,168,56,.2)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border2);color:var(--text2);font-size:.8rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.9rem;border-radius:var(--r);text-decoration:none;transition:border-color .2s,color .2s,background .2s}
+.btn-secondary:hover{border-color:var(--amber-border);color:var(--amber);background:var(--amber-dim)}
+.hero-social{display:flex;gap:1.25rem;margin-top:2.25rem;animation:fadeUp .8s .3s var(--ease) both}
+.hero-social a{font-family:var(--font-mono);font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .2s}
+.hero-social a:hover{color:var(--amber)}
+.hero-social span{color:var(--border2)}
+.hero-right{position:relative;animation:fadeUp .9s .2s var(--ease) both;display:flex;justify-content:center}
+.hero-img-frame{position:relative;display:inline-block}
+.hero-img-frame img{width:340px;height:420px;object-fit:cover;border-radius:var(--r);display:block;filter:grayscale(15%);position:relative;z-index:2}
+.hero-img-frame::before{content:'';position:absolute;inset:-14px;border:1px solid var(--amber-border);border-radius:var(--r);z-index:1}
+.hero-img-frame::after{content:'';position:absolute;bottom:-22px;right:-22px;width:70px;height:70px;border-right:1.5px solid var(--amber);border-bottom:1.5px solid var(--amber);z-index:1}
+.hero-badge{position:absolute;bottom:-1.5rem;left:-2.5rem;z-index:3;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);padding:1.1rem 1.4rem;min-width:175px}
+.hero-badge-num{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--amber);line-height:1}
+.hero-badge-label{font-family:var(--font-mono);font-size:.63rem;color:var(--text3);margin-top:.3rem;letter-spacing:.1em;text-transform:uppercase}
+.hero-badge2{position:absolute;top:-1rem;right:-2rem;z-index:3;background:var(--amber);border-radius:var(--r);padding:.6rem 1rem}
+.hero-badge2-text{font-family:var(--font-mono);font-size:.6rem;color:var(--bg);font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.scroll-hint{position:absolute;bottom:2.5rem;left:3rem;display:flex;align-items:center;gap:.8rem;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.18em;color:var(--text3);text-transform:uppercase;animation:fadeUp 1s .7s var(--ease) both}
+.scroll-line{width:40px;height:1px;background:var(--text3);position:relative;overflow:hidden}
+.scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--amber);animation:scanline 2s 1.5s var(--ease2) infinite}
+@keyframes scanline{0%{left:-100%}100%{left:100%}}
+
+/* SECTION COMMONS */
+section{position:relative;z-index:1;padding:8rem 3rem}
+.section-max{max-width:var(--max);margin:0 auto}
+.section-header{margin-bottom:4.5rem}
+.section-num{font-family:var(--font-mono);font-size:.65rem;color:var(--amber);letter-spacing:.25em;text-transform:uppercase;margin-bottom:.85rem;display:flex;align-items:center;gap:.75rem}
+.section-num::after{content:'';flex:0 0 2rem;height:1px;background:var(--amber-border)}
+.section-title{font-family:var(--font-display);font-size:clamp(2.1rem,4.5vw,3.5rem);font-weight:300;line-height:1.05}
+.section-title em{font-style:italic;color:var(--amber)}
+.section-sub{font-size:.95rem;color:var(--text2);max-width:520px;margin-top:1rem;line-height:1.75}
+.section-divider{width:3rem;height:1px;background:var(--amber-border);margin-top:1.5rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* ABOUT */
+#about{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{color:var(--text2);margin-bottom:1.3rem;font-size:1.03rem;line-height:1.85}
+.about-text p strong{color:var(--text);font-weight:500}
+.about-skills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.skill-tag{font-family:var(--font-mono);font-size:.67rem;padding:.32rem .85rem;border:1px solid var(--border2);border-radius:var(--r);color:var(--text3);letter-spacing:.06em;cursor:default;transition:border-color .2s,color .2s,background .2s}
+.skill-tag:hover{border-color:var(--amber-border);color:var(--amber);background:var(--amber-dim)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.stat-box{padding:1.5rem;border:1px solid var(--border);border-radius:var(--r);background:var(--bg3);transition:border-color .25s,transform .25s}
+.stat-box:hover{border-color:var(--amber-border);transform:translateY(-2px)}
+.stat-num{font-family:var(--font-display);font-size:2.6rem;font-weight:300;color:var(--amber);line-height:1}
+.stat-label{font-size:.72rem;color:var(--text3);margin-top:.35rem;letter-spacing:.07em}
+.stat-desc{font-size:.82rem;color:var(--text2);margin-top:.6rem;line-height:1.5}
+.skills-progress{margin-top:1.5rem}
+.skills-progress h4{font-family:var(--font-mono);font-size:.68rem;color:var(--text3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem}
+.skill-row{margin-bottom:1rem}
+.skill-row-top{display:flex;justify-content:space-between;margin-bottom:.4rem}
+.skill-name{font-size:.83rem;color:var(--text2)}
+.skill-pct{font-family:var(--font-mono);font-size:.72rem;color:var(--amber)}
+.skill-bar{height:3px;background:var(--border2);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;background:var(--amber);border-radius:2px;width:0;transition:width 1.2s var(--ease)}
+
+/* TIMELINE */
+#timeline{border-top:1px solid var(--border)}
+.timeline-list{position:relative;padding-left:2rem}
+.timeline-list::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border2)}
+.tl-item{position:relative;padding:0 0 3rem 2.5rem}
+.tl-item::before{content:'';position:absolute;left:-5px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:1.5px solid var(--amber-border);transition:background .3s,border-color .3s}
+.tl-item:hover::before{background:var(--amber);border-color:var(--amber)}
+.tl-item:last-child{padding-bottom:0}
+.tl-date{font-family:var(--font-mono);font-size:.67rem;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
+.tl-role{font-family:var(--font-display);font-size:1.3rem;font-weight:400;line-height:1.2;margin-bottom:.25rem}
+.tl-org{font-size:.85rem;color:var(--text3);margin-bottom:.7rem}
+.tl-desc{font-size:.9rem;color:var(--text2);line-height:1.7;max-width:600px}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
+.tl-tag{font-family:var(--font-mono);font-size:.62rem;padding:.22rem .65rem;border:1px solid var(--border);border-radius:2px;color:var(--text3);letter-spacing:.05em}
+
+/* RESEARCH */
+#research{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.research-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.research-card{padding:2.25rem 2rem;border:1px solid var(--border);border-radius:var(--r);background:var(--bg3);position:relative;overflow:hidden;transition:border-color .3s,transform .3s;cursor:default}
+.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);transform:scaleX(0);transition:transform .45s var(--ease)}
+.research-card::after{content:'';position:absolute;bottom:0;right:0;width:120px;height:120px;background:radial-gradient(circle at bottom right,var(--amber-dim),transparent 70%);opacity:0;transition:opacity .3s}
+.research-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.research-card:hover::before{transform:scaleX(1)}
+.research-card:hover::after{opacity:1}
+.r-icon{font-size:1.65rem;margin-bottom:1.4rem;display:block}
+.research-card h3{font-family:var(--font-display);font-size:1.45rem;font-weight:400;margin-bottom:.8rem;line-height:1.2}
+.research-card p{font-size:.88rem;color:var(--text2);line-height:1.75}
+.r-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.r-tag{font-family:var(--font-mono);font-size:.62rem;color:var(--amber);letter-spacing:.08em;text-transform:uppercase}
+
+/* PROJECTS */
+#projects{border-top:1px solid var(--border)}
+.projects-header-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;flex-wrap:wrap;gap:1.5rem}
+#projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.proj-card{border:1px solid var(--border);border-radius:var(--r);background:var(--bg2);padding:1.6rem;display:flex;flex-direction:column;gap:.8rem;transition:border-color .3s,transform .3s,box-shadow .3s;text-decoration:none;color:inherit}
+.proj-card:hover{border-color:var(--amber-border);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.proj-top{display:flex;justify-content:space-between;align-items:center}
+.proj-icon{font-size:1.1rem;color:var(--text3)}
+.proj-link-icon{font-family:var(--font-mono);font-size:.72rem;color:var(--amber);opacity:.6;transition:opacity .2s,transform .2s}
+.proj-card:hover .proj-link-icon{opacity:1;transform:translate(2px,-2px)}
+.proj-name{font-size:.95rem;font-weight:500;color:var(--text);line-height:1.3;word-break:break-word}
+.proj-desc{font-size:.82rem;color:var(--text2);line-height:1.65;flex:1}
+.proj-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.7rem;border-top:1px solid var(--border)}
+.proj-lang{font-family:var(--font-mono);font-size:.65rem;color:var(--text3);letter-spacing:.06em}
+.proj-arrow{font-size:.85rem;color:var(--amber);opacity:0;transition:opacity .2s,transform .2s}
+.proj-card:hover .proj-arrow{opacity:1;transform:translateX(3px)}
+.loading-state{grid-column:1/-1;text-align:center;padding:4rem;font-family:var(--font-mono);font-size:.78rem;color:var(--text3);letter-spacing:.1em}
+.loader{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border2);border-top-color:var(--amber);animation:spin .7s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PUBLICATIONS */
+#publications{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pub-list{display:flex;flex-direction:column;gap:.85rem}
+.pub-item{display:grid;grid-template-columns:3.5rem 1fr auto;align-items:center;gap:1.5rem;padding:1.6rem 1.75rem;border:1px solid var(--border);border-radius:var(--r);background:var(--bg3);transition:border-color .3s,transform .3s;cursor:default}
+.pub-item:hover{border-color:var(--border2);transform:translateX(4px)}
+.pub-num{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--text3);line-height:1;text-align:right}
+.pub-title{font-size:.98rem;font-weight:400;line-height:1.4;margin-bottom:.35rem;color:var(--text)}
+.pub-meta{font-family:var(--font-mono);font-size:.68rem;color:var(--text3);letter-spacing:.06em}
+.pub-badge{font-family:var(--font-mono);font-size:.62rem;padding:.3rem .8rem;border-radius:var(--r);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.badge-done{background:var(--bg4);color:var(--text3);border:1px solid var(--border)}
+.badge-wip{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)}
+
+/* CONTACT */
+#contact{border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-intro{font-family:var(--font-display);font-size:1.7rem;font-weight:300;line-height:1.45;margin-bottom:1.5rem;color:var(--text2)}
+.contact-intro em{font-style:italic;color:var(--text)}
+.contact-body{font-size:.9rem;color:var(--text2);line-height:1.8;margin-bottom:2rem}
+.contact-channels{display:flex;flex-direction:column;gap:.75rem}
+.c-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border:1px solid var(--border);border-radius:var(--r);text-decoration:none;color:var(--text2);transition:border-color .2s,color .2s,background .2s,transform .2s}
+.c-link:hover{border-color:var(--amber-border);color:var(--amber);background:var(--amber-dim);transform:translateX(4px)}
+.c-link-icon{font-size:1rem;width:1.25rem;text-align:center;flex-shrink:0}
+.c-link-label{font-size:.84rem;letter-spacing:.03em}
+.c-link-arrow{margin-left:auto;font-size:.8rem;opacity:0;transition:opacity .2s,transform .2s}
+.c-link:hover .c-link-arrow{opacity:1;transform:translateX(3px)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-group label{font-family:var(--font-mono);font-size:.67rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase}
+.form-group input,.form-group textarea{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:.8rem 1rem;color:var(--text);font-family:var(--font-body);font-size:.9rem;font-weight:300;outline:none;transition:border-color .2s,background .2s;resize:vertical;-webkit-appearance:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--amber-border);background:var(--bg4)}
+.form-group textarea{min-height:130px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-status{font-family:var(--font-mono);font-size:.75rem;padding:.6rem 1rem;border-radius:var(--r);display:none;letter-spacing:.06em}
+.form-status.success{display:block;background:rgba(56,168,100,.1);color:#56c47a;border:1px solid rgba(56,168,100,.25)}
+.form-status.error{display:block;background:rgba(232,68,56,.1);color:#e84438;border:1px solid rgba(232,68,56,.25)}
+.btn-send{align-self:flex-start;background:var(--amber);color:var(--bg);font-family:var(--font-body);font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 2.2rem;border:none;border-radius:var(--r);cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s}
+.btn-send:hover{background:var(--amber2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,168,56,.2)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);padding:3rem}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-brand{font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:var(--text)}
+.footer-brand span{color:var(--amber)}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:.75rem;color:var(--text3);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.footer-links a:hover{color:var(--amber)}
+.footer-copy{font-family:var(--font-mono);font-size:.68rem;color:var(--text3);text-align:right}
+.footer-copy a{color:var(--amber);text-decoration:none}
+
+/* BACK TO TOP */
+#btt{position:fixed;bottom:2rem;right:2rem;z-index:150;width:42px;height:42px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text2);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,border-color .2s,color .2s,transform .2s;text-decoration:none}
+#btt.visible{opacity:1;pointer-events:all}
+#btt:hover{border-color:var(--amber-border);color:var(--amber);transform:translateY(-3px)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:1rem 2rem}
+  section{padding:6rem 2rem}
+  #home{padding:0 2rem}
+  .hero-inner{grid-template-columns:1fr;gap:3rem;padding:8rem 0 4rem}
+  .hero-right{display:none}
+  .scroll-hint{left:2rem}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
+  .research-grid{grid-template-columns:1fr}
+  #projects-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  footer{padding:2rem}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cv{display:none}
+  .hamburger{display:flex}
+  section{padding:5rem 1.5rem}
+  #home{padding:0 1.5rem}
+  .hero-name{font-size:clamp(2.5rem,10vw,4rem)}
+  #projects-grid{grid-template-columns:1fr}
+  .pub-item{grid-template-columns:2.5rem 1fr;gap:1rem}
+  .pub-badge{display:none}
+  .projects-header-row{flex-direction:column;align-items:flex-start}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .footer-copy{text-align:left}
+  .theme-btn{display:none}
+}
+@media(max-width:480px){
+  .stat-grid{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" class="mm-link">Home</a>
+  <a href="#about" class="mm-link">About</a>
+  <a href="#timeline" class="mm-link">Experience</a>
+  <a href="#research" class="mm-link">Research</a>
+  <a href="#projects" class="mm-link">Projects</a>
+  <a href="#publications" class="mm-link">Publications</a>
+  <a href="#contact" class="mm-link">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#home" class="nav-logo">Funmilayo<span class="nav-logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#timeline">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">☀</button>
+    <a href="CV.pdf" download class="nav-cv">Download CV</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">AI Researcher &amp; Data Scientist</div>
+      <h1 class="hero-name">Funmilayo<br><em>Aina</em></h1>
+      <p class="hero-tagline">Bridging artificial intelligence, computational biology, and education — building intelligent systems that create measurable, real-world impact.</p>
+      <div class="hero-actions">
+        <a href="#research" class="btn-primary">Explore Research ↓</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-social">
+        <a href="https://github.com/Funmilayo-Aina" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span>/</span>
+        <a href="https://www.linkedin.com/in/funmilayomaina/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span>/</span>
+        <a href="mailto:funmilayomaryaina@yahoo.com">Email</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-frame">
+        <img src="Profile_picture.jpeg" alt="Funmilayo Aina — AI Researcher" loading="lazy">
+        <div class="hero-badge">
+          <div class="hero-badge-num">9+</div>
+          <div class="hero-badge-label">Open Source Projects</div>
+        </div>
+        <div class="hero-badge2">
+          <div class="hero-badge2-text">Currently: AI-Enabled Wheat Yield Promotion Using Remote Sensing and Climate Data to Improve Global Food Security</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span class="scroll-line"></span>Scroll to explore</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-max">
+    <div class="section-header reveal">
+      <div class="section-num">01 — About</div>
+      <h2 class="section-title">Interdisciplinary<br><em>by design</em></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I am a researcher at the intersection of <strong>artificial intelligence, biology, and education</strong> — domains that share a common thread: the potential to transform lives through data-driven intelligence.</p>
+        <p>My work focuses on building systems that learn, adapt, and make sense of complex real-world problems — from <strong>livestock management</strong> <strong>,AI-Enabled adaptive learning app <strong>, AI-Enabled smart farming apps</strong> to students learning outcome</strong>  <strong>I believe innovative solutions come from combining scientific rigour with creative engineering.</p>
+        <p>Currently developing an <strong></strong> that personalises educational experiences using machine learning — because every learner's path should be as unique as they are.</p>
+        <div class="about-skills">
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">Deep Learning</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Databricks</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">Data Engineering</span>
+          <span class="skill-tag">EdTech</span>
+          <span class="skill-tag">Computational Biology</span>
+          <span class="skill-tag">Smart Agriculture</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">C#</span>
+          <span class="skill-tag">Medallion Architecture</span>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="stat-num counter" data-target="9">0</div>
+            <div class="stat-label">GitHub Projects</div>
+            <div class="stat-desc">Open source tools spanning NLP, CV &amp; data engineering</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num counter" data-target="3">0</div>
+            <div class="stat-label">Published Theses</div>
+            <div class="stat-desc">Across livestock data, pedagogy &amp; plant biology</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num counter" data-target="4">0</div>
+            <div class="stat-label">Research Domains</div>
+            <div class="stat-desc">Precision Agriculture, AI in Education, Biology, Decision Intelligence</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num counter" data-target="1">0</div>
+            <div class="stat-label">Active Application</div>
+            <div class="stat-desc">AI Adaptive Learning App — in active development</div>
+          </div>
+        </div>
+        <div class="skills-progress">
+          <h4>Core Proficiencies</h4>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">Python &amp; ML Frameworks</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">Data Engineering</span><span class="skill-pct">82%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">NLP &amp; Deep Learning</span><span class="skill-pct">78%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-name">Research &amp; Analysis</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE / TIMELINE -->
+<section id="timeline">
+  <div class="section-max">
+    <div class="section-header reveal">
+      <div class="section-num">02 — Experience &amp; Education</div>
+      <h2 class="section-title">A journey across<br><em>disciplines</em></h2>
+      <div class="section-divider"></div>
+    </div>
+     <div class="tl-item reveal d1">
+        <div class="tl-date">2024</div>
+        <div class="tl-role">Smart Farming Apps</div>
+        <div class="tl-org">Research Project — AI for Agriculture</div>
+        <div class="tl-desc">Conducted exploratory data analysis and statistical modelling on data from smart farm environments to uncover patterns in wheat yield and, informing precision agriculture decisions.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">IoT Analytics</span>
+          <span class="tl-tag">Python</span>
+          <span class="tl-tag">Pandas</span>
+          <span class="tl-tag">AgriTech</span>
+        </div>
+      </div>
+    <div class="timeline-list">
+      <div class="tl-item reveal">
+        <div class="tl-date">2025 — Present</div>
+        <div class="tl-role">AI Adaptive Learning App Developer</div>
+        <div class="tl-org">Independent Research Project</div>
+        <div class="tl-desc">Designing and building an adaptive learning platform powered by machine learning that personalises educational content based on individual learner behaviour and performance patterns.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Machine Learning</span>
+          <span class="tl-tag">EdTech</span>
+          <span class="tl-tag">Python</span>
+          <span class="tl-tag">NLP</span>
+        </div>
+      </div>
+      
+      <div class="tl-item reveal d2">
+        <div class="tl-date">2024</div>
+        <div class="tl-role">Smart Farm Sensor Data Analysis</div>
+        <div class="tl-org">Research Project — AI for Agriculture</div>
+        <div class="tl-desc">Conducted exploratory data analysis on IoT sensor data from smart farm environments to uncover patterns in crop and livestock conditions, informing precision agriculture decisions.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">IoT Analytics</span>
+          <span class="tl-tag">Python</span>
+          <span class="tl-tag">Pandas</span>
+          <span class="tl-tag">AgriTech</span>
+        </div>
+      </div>
+      <div class="tl-item reveal d3">
+        <div class="tl-date">2023 — 2024</div>
+        <div class="tl-role">Data Engineering — Databricks Medallion Architecture</div>
+        <div class="tl-org">Data Platform Project</div>
+        <div class="tl-desc">Implemented a lakehouse medallion architecture on Databricks, building Bronze / Silver / Gold data pipelines for structured data transformation and analytics at scale.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Databricks</span>
+          <span class="tl-tag">PySpark</span>
+          <span class="tl-tag">SQL</span>
+          <span class="tl-tag">Delta Lake</span>
+        </div>
+      </div>
+      <div class="tl-item reveal d4">
+        <div class="tl-date">2022 — 2023</div>
+        <div class="tl-role">Backend Developer — NUPAT Web API</div>
+        <div class="tl-org">NUPAT Technologies</div>
+        <div class="tl-desc">Built and maintained RESTful Web API services using ASP.NET Core, supporting educational platform features including user management, course delivery, and assessment systems.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">C# / ASP.NET</span>
+          <span class="tl-tag">REST API</span>
+          <span class="tl-tag">SQL Server</span>
+        </div>
+      </div>
+      <div class="tl-item reveal d2">
+        <div class="tl-date">Prior</div>
+        <div class="tl-role">Research — Biology &amp; Education Thesis</div>
+        <div class="tl-org">Academic Research</div>
+        <div class="tl-desc">Completed thesis spanning data-driven livestock management, teaching practice impact assessment in Lagos State, and allelopathic plant interactions — establishing a strong interdisciplinary foundation.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Research Methods</span>
+          <span class="tl-tag">Biology</span>
+          <span class="tl-tag">Education</span>
+          <span class="tl-tag">Data Analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-max">
+    <div class="section-header reveal">
+      <div class="section-num">03 — Research Focus</div>
+      <h2 class="section-title">Where curiosity<br><em>meets computation</em></h2>
+      <div class="section-sub">Four interconnected research threads, each exploring how AI creates meaningful impact in complex, data-rich domains.</div>
+      <div class="section-divider"></div>
+    </div>
+    <div class="research-grid">
+      <div class="research-card reveal">
+        <span class="r-icon">🎓</span>
+        <h3>AI in Education &amp; Adaptive Systems</h3>
+        <p>Designing intelligent tutoring systems and adaptive learning platforms that personalise the educational journey. Leveraging NLP and ML to understand learning patterns and close knowledge gaps at scale.</p>
+        <div class="r-tags">
+          <span class="r-tag">EdTech</span><span class="r-tag">·</span>
+          <span class="r-tag">Adaptive Learning</span><span class="r-tag">·</span>
+          <span class="r-tag">NLP</span>
+        </div>
+      </div>
+      <div class="research-card reveal d1">
+        <span class="r-icon">🧬</span>
+        <h3>Computational Biology</h3>
+        <p>Applying machine learning and statistical modelling to biological datasets — from livestock behaviour and genetics to plant allelopathy studies. Translating life sciences into quantifiable, actionable insights.</p>
+        <div class="r-tags">
+          <span class="r-tag">Bioinformatics</span><span class="r-tag">·</span>
+          <span class="r-tag">Genomics</span><span class="r-tag">·</span>
+          <span class="r-tag">ML</span>
+        </div>
+      </div>
+      <div class="research-card reveal d2">
+        <span class="r-icon">🌾</span>
+        <h3>AI in Agriculture</h3>
+        <p>Building smart farming solutions using IoT sensor data, predictive analytics, and computer vision to support precision agriculture. Enhancing yield, reducing waste, and informing sustainable decisions.</p>
+        <div class="r-tags">
+          <span class="r-tag">Smart Farming</span><span class="r-tag">·</span>
+          <span class="r-tag">IoT</span><span class="r-tag">·</span>
+          <span class="r-tag">Predictive Analytics</span>
+        </div>
+      </div>
+      <div class="research-card reveal d3">
+        <span class="r-icon">📊</span>
+        <h3>Data-driven Decision Making</h3>
+        <p>Developing analytical frameworks and dashboards that transform raw organisational data into strategic intelligence — bridging the gap between data science and real-world policy decisions.</p>
+        <div class="r-tags">
+          <span class="r-tag">Analytics</span><span class="r-tag">·</span>
+          <span class="r-tag">BI</span><span class="r-tag">·</span>
+          <span class="r-tag">Decision Science</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-max">
+    <div class="projects-header-row">
+      <div class="section-header reveal" style="margin-bottom:0">
+        <div class="section-num">04 — Projects</div>
+        <h2 class="section-title">Selected<br><em>work</em></h2>
+        <div class="section-divider"></div>
+      </div>
+      <a href="https://github.com/Funmilayo-Aina" target="_blank" rel="noopener noreferrer" class="btn-secondary reveal">View all on GitHub ↗</a>
+    </div>
+    <div id="projects-grid">
+      <div class="loading-state">
+        <div class="loader"></div>
+        Fetching projects from GitHub…
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-max">
+    <div class="section-header reveal">
+      <div class="section-num">05 — Publications &amp; Research</div>
+      <h2 class="section-title">Academic<br><em>contributions</em></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="pub-list">
+      <div class="pub-item reveal">
+        <div class="pub-num">01</div>
+        <div>
+          <div class="pub-title">Data-Driven Decision Making for Livestock weight Management</div>
+          <div class="pub-meta">Thesis · Computational Biology × Agricultural AI · Data Analysis</div>
+        </div>
+        <span class="pub-badge badge-done">Complete</span>
+      </div>
+      <div class="pub-item reveal d1">
+        <div class="pub-num">02</div>
+        <div>
+          <div class="pub-title">IMPACT OF TEACHING PRACTICE ON PROFESSION CAPACITY BUILDING OF PRE SERVICE TEACHERS IN LAGOS STATE</div>
+          <div class="pub-meta">Thesis · Education Research × Pedagogy · Qualitative &amp; Quantitative Methods</div>
+        </div>
+        <span class="pub-badge badge-done">Complete</span>
+      </div>
+      <div class="pub-item reveal d2">
+        <div class="pub-num">03</div>
+        <div>
+          <div class="pub-title">AI-Enabled Software for Wheat Yield Promotion</div>
+          <div class="pub-meta">Active Research · Precision Agriculture × Ecological Systems · Statistical Modelling</div>
+        </div>
+        <span class="pub-badge badge-done">In Progress</span>
+      </div>
+      <div class="pub-item reveal d3">
+        <div class="pub-num">04</div>
+        <div>
+          <div class="pub-title">AI Adaptive Learning Application — Research &amp; Development</div>
+          <div class="pub-meta">Active Research · EdTech × Machine Learning · Personalisation Algorithms</div>
+        </div>
+        <span class="pub-badge badge-wip">In Progress</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-max">
+    <div class="section-header reveal">
+      <div class="section-num">06 — Contact</div>
+      <h2 class="section-title">Let's build<br><em>something</em></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-intro">Open to <em>collaborations, research partnerships,</em> and conversations about the future of AI.</p>
+        <p class="contact-body">Whether you're working on an AI project, exploring interdisciplinary research, or looking for a collaborator who bridges technical depth with domain breadth — I'd love to hear from you.</p>
+        <div class="contact-channels">
+          <a href="mailto:funmilayomaryaina@yahoo.com" class="c-link">
+            <span class="c-link-icon">✉</span>
+            <span class="c-link-label">funmilayomaryaina@yahoo.com</span>
+            <span class="c-link-arrow">→</span>
+          </a>
+          <a href="https://github.com/Funmilayo-Aina" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="c-link-icon">◉</span>
+            <span class="c-link-label">github.com/Funmilayo-Aina</span>
+            <span class="c-link-arrow">→</span>
+          </a>
+          <a href="https://www.linkedin.com/in/funmilayomaina/" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="c-link-icon">◈</span>
+            <span class="c-link-label">linkedin.com/in/funmilayomaina</span>
+            <span class="c-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="f-name" placeholder="Jane Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="f-email" placeholder="jane@example.com" autocomplete="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="f-subject" placeholder="Research collaboration, project enquiry…">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="f-msg" placeholder="Tell me about your project or research idea…"></textarea>
+          </div>
+          <div class="form-status" id="f-status"></div>
+          <button class="btn-send" id="f-submit">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Funmilayo<span> Aina</span></div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">
+      © 2026 Funmilayo Aina<br>
+      <a href="mailto:funmilayomaryaina@yahoo.com">funmilayomaryaina@yahoo.com</a>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<a href="#home" id="btt" aria-label="Back to top">↑</a>
+
+<script>
+/* THEME TOGGLE */
+const html = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+let dark = true;
+themeBtn.addEventListener('click', () => {
+  dark = !dark;
+  html.setAttribute('data-theme', dark ? 'dark' : 'light');
+  themeBtn.textContent = dark ? '☀' : '☾';
+});
+
+/* NAV SCROLL + BACK TO TOP */
+const mainNav = document.getElementById('mainNav');
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  mainNav.classList.toggle('scrolled', y > 60);
+  btt.classList.toggle('visible', y > 500);
+}, { passive: true });
+
+/* HAMBURGER */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const open = hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+document.querySelectorAll('.mm-link').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+/* SCROLL REVEAL */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* COUNTER ANIMATION */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = target >= 9 ? '+' : '';
+  const start = performance.now();
+  const dur = 1200;
+  const tick = now => {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+/* SKILL BARS */
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.width = e.target.dataset.width + '%'; barObs.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.skill-fill').forEach(el => barObs.observe(el));
+
+/* GITHUB PROJECTS */
+const FALLBACK = [
+  { name: 'Mini-E-Learning-Platform', html_url: 'https://github.com/Funmilayo-Aina/Mini-E-Learning-Platform', language: 'Python', description: 'Adaptive e-learning platform prototype with personalised content delivery' },
+  { name: 'Natural-Language-Processing', html_url: 'https://github.com/Funmilayo-Aina/Natural-Language-Processing', language: 'Python', description: 'NLP experiments, text classification and language model implementations' },
+  { name: 'DEEP-LEARNING-PROJECTS', html_url: 'https://github.com/Funmilayo-Aina/DEEP-LEARNING-PROJECTS', language: 'Python', description: 'Neural network architectures and deep learning explorations' },
+  { name: 'NUPATBACKEND-WebAPI', html_url: 'https://github.com/Funmilayo-Aina/NUPATBACKEND-WebAPI', language: 'C#', description: 'RESTful Web API backend for the NUPAT educational platform' },
+  { name: 'AI-for-Sustainable-Development', html_url: 'https://github.com/Funmilayo-Aina/AI-for-Sustainable-Development', language: 'Python', description: 'AI-driven solutions targeting sustainable development goals' },
+  { name: 'Databricks-Medallion', html_url: 'https://github.com/Funmilayo-Aina/Databricks_Medallion', language: 'SQL', description: 'Lakehouse medallion architecture: Bronze, Silver, Gold data pipelines' },
+  { name: 'Smart-Farm-Sensor-EDA', html_url: 'https://github.com/Funmilayo-Aina/Smart-Farm-Sensor-EDA', language: 'Python', description: 'Exploratory data analysis of IoT sensor data from smart farm environments' },
+  { name: 'AI-Detective-Blog', html_url: 'https://github.com/Funmilayo-Aina/AI_Detective_Blog', language: 'JavaScript', description: 'Interactive AI-themed investigative blog and knowledge hub' },
+  { name: 'NUPAT-Projects', html_url: 'https://github.com/Funmilayo-Aina/NUPAT_Projects', language: 'Python', description: 'Collection of training projects and applied data science work' },
+];
+
+function buildCard(repo, i) {
+  const a = document.createElement('a');
+  const delay = i % 3;
+  a.className = 'proj-card reveal' + (delay === 1 ? ' d1' : delay === 2 ? ' d2' : '');
+  a.href = repo.html_url;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+
+  const top = document.createElement('div'); top.className = 'proj-top';
+  const ico = document.createElement('span'); ico.className = 'proj-icon'; ico.textContent = '⌗';
+  const lnk = document.createElement('span'); lnk.className = 'proj-link-icon'; lnk.textContent = '↗';
+  top.appendChild(ico); top.appendChild(lnk);
+
+  const name = document.createElement('div'); name.className = 'proj-name';
+  name.textContent = repo.name.replace(/[-_]/g, ' ');
+
+  const desc = document.createElement('div'); desc.className = 'proj-desc';
+  desc.textContent = repo.description || 'Open source project';
+
+  const foot = document.createElement('div'); foot.className = 'proj-footer';
+  const lang = document.createElement('span'); lang.className = 'proj-lang'; lang.textContent = repo.language || '';
+  const arrow = document.createElement('span'); arrow.className = 'proj-arrow'; arrow.textContent = '→';
+  foot.appendChild(lang); foot.appendChild(arrow);
+
+  a.appendChild(top); a.appendChild(name); a.appendChild(desc); a.appendChild(foot);
+  return a;
+}
+
+function renderProjects(repos) {
+  const grid = document.getElementById('projects-grid');
+  grid.innerHTML = '';
+  repos.forEach((repo, i) => grid.appendChild(buildCard(repo, i)));
+  document.querySelectorAll('.proj-card.reveal').forEach(el => revealObs.observe(el));
+}
+
+async function loadProjects() {
+  try {
+    const res = await fetch('https://api.github.com/users/Funmilayo-Aina/repos?per_page=9&sort=updated', {
+      headers: { 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    renderProjects(data.length ? data : FALLBACK);
+  } catch {
+    renderProjects(FALLBACK);
+  }
+}
+loadProjects();
+
+/* CONTACT FORM */
+document.getElementById('f-submit').addEventListener('click', () => {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const subject = document.getElementById('f-subject').value.trim();
+  const msg = document.getElementById('f-msg').value.trim();
+  const status = document.getElementById('f-status');
+
+  if (!name || !email || !msg) {
+    status.textContent = '⚠  Please fill in your name, email, and message.';
+    status.className = 'form-status error';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    status.textContent = '⚠  Please enter a valid email address.';
+    status.className = 'form-status error';
+    return;
+  }
+  const body = encodeURIComponent(msg + '\n\n—\nFrom: ' + name + '\nEmail: ' + email);
+  const subj = encodeURIComponent(subject || 'Portfolio Enquiry from ' + name);
+  window.location.href = 'mailto:funmilayomaryaina@yahoo.com?subject=' + subj + '&body=' + body;
+  status.textContent = '✓  Opening your email client…';
+  status.className = 'form-status success';
+});
+</script>
+</body>
+</html>
