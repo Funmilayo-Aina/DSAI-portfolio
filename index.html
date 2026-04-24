@@ -343,7 +343,7 @@ footer{position:relative;z-index:1;background:var(--bg2);border-top:1px solid va
         <img src="Profile_picture.jpeg" alt="Funmilayo Aina — AI Researcher" loading="lazy">
         <div class="hero-badge">
           <div class="hero-badge-num">9+</div>
-          <div class="hero-badge-label">Open Source Projects</div>
+          
         </div>
         <div class="hero-badge2">
           <div class="hero-badge2-text">Currently: AI-Enabled Wheat Yield Promotion Using Remote Sensing and Climate Data to Improve Global Food Security</div>
@@ -817,7 +817,7 @@ function buildCard(repo, i) {
   name.textContent = repo.name.replace(/[-_]/g, ' ');
 
   const desc = document.createElement('div'); desc.className = 'proj-desc';
-  desc.textContent = repo.description || 'Open source project';
+  desc.textContent = repo.description || 'portfolio';
 
   const foot = document.createElement('div'); foot.className = 'proj-footer';
   const lang = document.createElement('span'); lang.className = 'proj-lang'; lang.textContent = repo.language || '';
